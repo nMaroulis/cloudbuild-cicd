@@ -6,6 +6,7 @@ import os
 app = Flask(__name__)
 client = bigquery.Client()
 
+
 @app.route('/')
 def main(big_query_client=client):
     table_id = "udemy-course-447219.test_schema.us_states"
@@ -25,4 +26,5 @@ def main(big_query_client=client):
     return {"data": destination_table.num_rows}
 
 if __name__ == "__main__":
+    pring("MAIN RUN")
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5052)))
